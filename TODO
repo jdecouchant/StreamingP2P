@@ -1,0 +1,29 @@
+DONE:
+	* Server: sends the epoch list only once per node and per epoch. 
+	* Make peers exchange epoch list
+	* When node quits the session, they inform the server. The server takes it into account at the beginning of the following round, to simulate the reception of the information from the tracker
+	* When a node tries to interact with a node that left, the node that left sends a message telling him that he left. The node is then allowed to replace its partner. 
+	* Propagate the epoch list of (e+2) during e
+	* Make nodes exchange the list of absent nodes during an epoch
+	* Use sets instead of arraylists for the epoch lists
+	* Add the possibility for nodes to be incorrect, make it depends on the scenario -> rational, or colluders (the detection is not made at the same time)
+	* Add the detection of faultive nodes
+	* Make nodes count the jittered rounds among those where they are present only
+	* Make nodes count the number of rounds they wait before experiencing a non-jittered round
+	* Make in and out queues non-blocking to colocate instances of cofree
+	* Find a way to make threads begin at the same time (currently the first thread is penalized) -> OK: they begin at the beginning of the second minute after their launch
+		
+IN PROGRESS:	
+	* Reduce the bandwidth allocated for each machine
+   * Reduce the load on the server: receiver, + main
+	
+TODO:
+	* Allow new nodes to interact before the epoch list in which they appear is made public
+	* Exchange epoch list as chunks (not sure that it is necessary)
+	
+	* Use several kinds of message to optimize the size they need (some fields are not always necessary)
+	* Control the size of the packets that are sent
+	* Make packets by hand to optimize their size
+	
+	* Collect stats about the upload and the download bandwidths	
+	
